@@ -7,13 +7,12 @@ import {changePage} from "../store/actionCreators";
 const PostList = () => {
   const dispatch=useDispatch()
   const posts = useSelector((state) => state.posts);
-  const activePage=useSelector(state => state.pageAndLimit.page)
   const pageAndLimit = useSelector((state) => state.pageAndLimit);
   const countPage = Math.ceil(pageAndLimit.postCount / pageAndLimit.limit);
   let items = [];
   for (let i = 1; i <= countPage; i++) {
     items.push(
-      <Pagination.Item key={i} active={i === activePage} variant="dark" onClick={()=>dispatch(changePage(i))}>
+      <Pagination.Item key={i} active={i === pageAndLimit.page} variant="dark" onClick={()=>dispatch(changePage(i))}>
         {i}
       </Pagination.Item>
     );
