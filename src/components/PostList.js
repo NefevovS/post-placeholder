@@ -2,7 +2,7 @@ import React from "react";
 import PostItem from "./PostItem";
 import {useDispatch, useSelector} from "react-redux";
 import { Container, Pagination } from "react-bootstrap";
-import {changePage} from "../store/actionCreators";
+import {asyncChangePage, changePage} from "../store/actionCreators";
 
 const PostList = () => {
   const dispatch=useDispatch()
@@ -12,7 +12,7 @@ const PostList = () => {
   let items = [];
   for (let i = 1; i <= countPage; i++) {
     items.push(
-      <Pagination.Item key={i} active={i === pageAndLimit.page} variant="dark" onClick={()=>dispatch(changePage(i))}>
+      <Pagination.Item key={i} active={i === pageAndLimit.page} variant="dark" onClick={()=>dispatch(asyncChangePage(i))}>
         {i}
       </Pagination.Item>
     );
