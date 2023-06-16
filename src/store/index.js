@@ -1,9 +1,9 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import createSagaMiddleWare from "redux-saga";
 import {composeWithDevTools} from "redux-devtools-extension"
-import {rootSaga} from "../saga/rootSaga";
 import {postReducer} from "./postReducer";
 import {pageAndLimitReducer} from "./pageAndLimitReducer";
+import {rootSaga} from "../saga";
 
 const rootReducer=combineReducers({posts:postReducer,pageAndLimit:pageAndLimitReducer})
 const configureStore=()=>{

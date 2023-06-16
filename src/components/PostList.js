@@ -12,7 +12,7 @@ const PostList = () => {
   let items = [];
   for (let i = 1; i <= countPage; i++) {
     items.push(
-      <Pagination.Item key={i} active={i === pageAndLimit.page} variant="dark" onClick={()=>dispatch(asyncChangePage(i))}>
+      <Pagination.Item key={i} active={i === pageAndLimit.page} variant="dark" onClick={()=>dispatch(asyncChangePage({page:i}))}>
         {i}
       </Pagination.Item>
     );

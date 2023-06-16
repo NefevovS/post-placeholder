@@ -6,7 +6,7 @@ import {asyncFetchPosts} from "../store/actionCreators";
 const PostsPage = () => {
     const dispatch =useDispatch()
     useEffect(function (){
-        dispatch(asyncFetchPosts())},[])
+        dispatch(asyncFetchPosts())})
 
     return (
         <div>
