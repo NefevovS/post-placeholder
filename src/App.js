@@ -6,12 +6,11 @@ import About from "./pages/About";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
 import {asyncFetchPosts} from "./store/actionCreators";
+import UserInfo from "./pages/UserInfo";
 
 
 function App() {
-    const dispatch =useDispatch()
-    useEffect(function (){
-        dispatch(asyncFetchPosts())},[])
+
   return (
     <div className="App">
         <Navigation />
@@ -19,6 +18,7 @@ function App() {
         <Routes>
             <Route path="/" element={<PostsPage/>}/>
             <Route path="/about" element={<About/>}/>
+            <Route path="/userInfo/:id" element={<UserInfo/>}/>
         </Routes>
     </div>
   );

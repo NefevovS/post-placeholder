@@ -1,9 +1,12 @@
 import React from 'react';
+import {useParams} from "react-router-dom";
 
 const UserInfo = () => {
+    const {id}=useParams()
+
     return (
         <div>
-            UserInfo
+            UserInfo {id}
         </div>
     );
 };

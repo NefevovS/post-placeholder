@@ -1,19 +1,32 @@
-import React from 'react';
+import React from "react";
 import PostItem from "./PostItem";
-import {useSelector} from "react-redux";
-import {Container} from "react-bootstrap";
+import {useDispatch, useSelector} from "react-redux";
+import { Container, Pagination } from "react-bootstrap";
+import {changePage} from "../store/actionCreators";
 
 const PostList = () => {
-    const posts=useSelector(state => state.posts)
-    console.log(posts)
-    return (
-       <Container className='d-flex flex-column gap-2'>
-           {posts.map((post)=>
-               <PostItem title={post.title} body={post.body} key={post.id}/>
-           )
-           }
-       </Container>
+  const dispatch=useDispatch()
+  const posts = useSelector((state) => state.posts);
+  const activePage=useSelector(state => state.pageAndLimit.page)
+  const pageAndLimit = useSelector((state) => state.pageAndLimit);
+  const countPage = Math.ceil(pageAndLimit.postCount / pageAndLimit.limit);
+  let items = [];
+  for (let i = 1; i <= countPage; i++) {
+    items.push(
+      <Pagination.Item key={i} active={i === activePage} variant="dark" onClick={()=>dispatch(changePage(i))}>
+        {i}
+      </Pagination.Item>
     );
+  }
+
+  return (
+    <Container className="d-flex flex-column gap-2">
+      {posts.map((post) => (
+        <PostItem post={post} key={post.id} />
+      ))}
+      <Pagination className="justify-content-center pt-3 pb-3">{items}</Pagination>
+    </Container>
+  );
 };
 
 export default PostList;
