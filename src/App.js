@@ -4,11 +4,14 @@ import PostsPage from "./pages/PostsPage";
 import {Route, Routes} from "react-router-dom";
 import About from "./pages/About";
 import {useEffect} from "react";
-import {PostService} from "./API/PostService";
+import {useDispatch} from "react-redux";
+import {asyncFetchPosts} from "./store/actionCreators";
 
 
 function App() {
-    useEffect(()=>PostService.getPosts(),[])
+    const dispatch =useDispatch()
+    useEffect(function (){
+        dispatch(asyncFetchPosts())},[])
   return (
     <div className="App">
         <Navigation/>

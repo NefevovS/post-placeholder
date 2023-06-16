@@ -1,0 +1,2 @@
+export const SET_POSTS="SET_POSTS"
+export const ASYNC_FETCH_POSTS="ASYNC_FETCH_POSTS"
