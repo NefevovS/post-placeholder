@@ -1,10 +1,20 @@
 import React from 'react';
+import {Card, Col, Row} from "react-bootstrap";
 
-const PostItem = () => {
+const PostItem = ({body,title}) => {
     return (
-        <div>
-            
-        </div>
+           <Row>
+               <Col>
+                   <Card className='p-2'>
+                       <p className="fw-bold">{title}</p>
+                       {body}
+                   </Card>
+               </Col>
+           </Row>
+
+
+
+
     );
 };
 

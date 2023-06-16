@@ -14,7 +14,8 @@ function App() {
         dispatch(asyncFetchPosts())},[])
   return (
     <div className="App">
-        <Navigation/>
+        <Navigation />
+
         <Routes>
             <Route path="/" element={<PostsPage/>}/>
             <Route path="/about" element={<About/>}/>

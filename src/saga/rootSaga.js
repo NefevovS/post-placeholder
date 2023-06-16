@@ -5,7 +5,6 @@ import {ASYNC_FETCH_POSTS} from "../store/actionConst";
 
 function* postWorker(){
     const data=yield call(PostService.getPosts)
-    console.log(data)
     yield put(setPost(data))
 }
 export function* postWatcher(){

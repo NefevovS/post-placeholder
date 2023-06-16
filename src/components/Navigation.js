@@ -3,7 +3,7 @@ import {Container, Nav, Navbar} from "react-bootstrap";
 
 const Navigation = () => {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
+        <Navbar expand="lg" className="bg-body-tertiary mb-4" data-bs-theme="dark">
             <Container>
                 <Navbar.Brand href="/">PostPlaceholder</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
