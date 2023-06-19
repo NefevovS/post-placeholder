@@ -1,16 +1,24 @@
-import {PostService} from "../API/PostService";
-import {changePage, setPost, setPostCount} from "../store/actionCreators";
-import {ASYNC_CHANGE_PAGE} from "../store/actionConst";
+import { PostService } from "../API/PostService";
+import {
+  changePage,
+  fetchPostByPage,
+  fetchPostByPageFailed,
+  fetchPostByPageSucceeded,
+  setPostCount,
+} from "../store/actionCreators";
+import { ASYNC_CHANGE_PAGE } from "../store/actionConst";
 import { put, takeEvery, call } from "redux-saga/effects";
 
-
-function* asyncChangePage({ payload:{page} }) {
-    const responce = yield call(PostService.getPosts, page);
-    const postCount = Number(responce.headers["x-total-count"]);
+function* fetchPostByPageSaga({ payload: { page } }) {
+  yield put(fetchPostByPage());
+  const { response, error } = yield call(PostService.getPosts, page);
+  if (response) {
+    yield put(fetchPostByPageSucceeded(response.data));
+    const postCount = Number(response.headers["x-total-count"]);
     yield put(setPostCount(postCount));
     yield put(changePage(page));
-    yield put(setPost(responce.data));
+  } else yield put(fetchPostByPageFailed(error));
 }
 export function* changePageWatcher() {
-    yield takeEvery(ASYNC_CHANGE_PAGE, asyncChangePage);
+  yield takeEvery(ASYNC_CHANGE_PAGE, fetchPostByPageSaga);
 }

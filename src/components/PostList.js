@@ -2,11 +2,11 @@ import React from "react";
 import PostItem from "./PostItem";
 import {useDispatch, useSelector} from "react-redux";
 import { Container, Pagination } from "react-bootstrap";
-import {asyncChangePage, changePage} from "../store/actionCreators";
+import {asyncChangePage} from "../store/actionCreators";
 
 const PostList = () => {
   const dispatch=useDispatch()
-  const posts = useSelector((state) => state.posts);
+  const posts = useSelector((state) => state.posts.posts);
   const pageAndLimit = useSelector((state) => state.pageAndLimit);
   const countPage = Math.ceil(pageAndLimit.postCount / pageAndLimit.limit);
   let items = [];
@@ -20,7 +20,7 @@ const PostList = () => {
 
   return (
     <Container className="d-flex flex-column gap-2">
-      {posts.map((post) => (
+      {posts?.map((post) => (
         <PostItem post={post} key={post.id} />
       ))}
       <Pagination className="justify-content-center pt-3 pb-3">{items}</Pagination>
