@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react';
 import PostList from "../components/PostList";
-import {useDispatch} from "react-redux";
-import {asyncFetchPosts} from "../store/actionCreators";
+import {useDispatch, useSelector} from "react-redux";
+import {asyncChangePage} from "../store/actionCreators";
 
 const PostsPage = () => {
+
     const dispatch =useDispatch()
     useEffect(function (){
-        dispatch(asyncFetchPosts())})
+        dispatch(asyncChangePage({page:1}))})
 
     return (
         <div>
