@@ -7,7 +7,6 @@ import CommentsList from "./CommentsList";
 const PostItem = ({ post }) => {
   const navigate = useNavigate();
   return (
-    <Row>
       <Card className="p-2">
         <Row>
           <Col className="flex-grow-0">
@@ -28,13 +27,13 @@ const PostItem = ({ post }) => {
             <p>{post.body}</p>
           </Col>
         </Row>
-        <Row>
-          <Col className="d-flex justify-content-end">
-            <CommentsList postId={post.id} />
-          </Col>
+        <Row  className="d-flex justify-content-end">
+            <Col >
+                <CommentsList postId={post.id} />
+            </Col>
         </Row>
       </Card>
-    </Row>
+
   );
 };
 

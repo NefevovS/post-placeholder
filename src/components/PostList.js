@@ -1,14 +1,22 @@
-import React from "react";
+import React, {useMemo} from "react";
 import PostItem from "./PostItem";
 import {useDispatch, useSelector} from "react-redux";
 import { Container, Pagination } from "react-bootstrap";
 import {asyncChangePage} from "../store/actionCreators";
+import SortAndSearchForm from "./SortAndSearchForm";
+import {useSearchAndSort} from "../hooks/useSearchAndSort";
 
 const PostList = () => {
   const dispatch=useDispatch()
   const posts = useSelector((state) => state.posts.posts);
+  const {searchQuery,select}=useSelector(state => state.sortAndSearch)
   const pageAndLimit = useSelector((state) => state.pageAndLimit);
   const countPage = Math.ceil(pageAndLimit.postCount / pageAndLimit.limit);
+
+ const searchedAndSortedPosts = useSearchAndSort(posts, searchQuery, select)
+
+
+
   let items = [];
   for (let i = 1; i <= countPage; i++) {
     items.push(
@@ -20,7 +28,8 @@ const PostList = () => {
 
   return (
     <Container className="d-flex flex-column gap-2">
-      {posts?.map((post) => (
+      <SortAndSearchForm/>
+      {searchedAndSortedPosts?.map((post) => (
         <PostItem post={post} key={post.id} />
       ))}
       <Pagination className="justify-content-center pt-3 pb-3">{items}</Pagination>

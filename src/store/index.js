@@ -5,11 +5,13 @@ import { postReducer } from "./postReducer";
 import { pageAndLimitReducer } from "./pageAndLimitReducer";
 import { rootSaga } from "../saga";
 import { commentsReducer } from "./commentsReducer";
+import {sortAndSearchReducer} from "./sortAndSearchFormReducer";
 
 const rootReducer = combineReducers({
   posts: postReducer,
   pageAndLimit: pageAndLimitReducer,
   comments: commentsReducer,
+  sortAndSearch:sortAndSearchReducer
 });
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleWare();
