@@ -3,9 +3,6 @@ import Navigation from "./components/Navigation";
 import PostsPage from "./pages/PostsPage";
 import {Route, Routes} from "react-router-dom";
 import About from "./pages/About";
-import {useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {asyncFetchPosts} from "./store/actionCreators";
 import UserInfo from "./pages/UserInfo";
 
 

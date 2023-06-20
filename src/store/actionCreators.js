@@ -6,7 +6,7 @@ import {
   FETCH_COMMENTS_BY_POST_ID_SUCCEEDED,
   FETCH_POST_BY_PAGE_FAILED,
   FETCH_POST_BY_PAGE_PENDING,
-  FETCH_POST_BY_PAGE_SUCCEEDED,
+  FETCH_POST_BY_PAGE_SUCCEEDED, FETCH_USER_BY_ID_FAILED, FETCH_USER_BY_ID_PENDING, FETCH_USER_BY_ID_SUCCEEDED,
   RESET_SEARCH_QUERY,
   SET_POSTS_COUNT,
   SET_SEARCH_QUERY,
@@ -58,3 +58,17 @@ export const setSearchQuery = (payload) => ({
 });
 export const setSortValue = (payload) => ({ type: SET_SORT_VALUE, payload });
 export const resetSearchQuery = () => ({ type: RESET_SEARCH_QUERY });
+
+
+export const fetchUserByIdPending = (id) => ({
+  type: FETCH_USER_BY_ID_PENDING,
+  payload: { id },
+});
+export const fetchUserByIdSucceeded = (data,id) => ({
+  type: FETCH_USER_BY_ID_SUCCEEDED,
+  payload: {data,id}
+});
+export const fetchUserByIdFailed = (error,id) => ({
+  type: FETCH_USER_BY_ID_FAILED,
+  payload: {error,id},
+});

@@ -19,7 +19,7 @@ const PostItem = ({ post }) => {
                 borderRadius: "50%",
                 cursor: "pointer",
               }}
-              onClick={() => navigate(`/userInfo/${post.id}`)}
+              onClick={() => navigate(`/userInfo/${post.userId}`)}
             />
           </Col>
           <Col>

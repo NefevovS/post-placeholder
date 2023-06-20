@@ -18,4 +18,10 @@ export class PostService {
       .then((response) => ({ response }))
       .catch((error) => ({ error }));
   }
+  static async getUserById(id) {
+    return await axios
+        .get(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then((response) => ({ response }))
+        .catch((error) => ({ error }));
+  }
 }
