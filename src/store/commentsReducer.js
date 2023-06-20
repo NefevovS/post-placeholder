@@ -34,7 +34,7 @@ export const commentsReducer = (state = [], action) => {
         {
           postId: action.payload.id,
           loading: false,
-          error: action.payload.data,
+          error: action.payload.error,
           comments: null,
         },
       ];

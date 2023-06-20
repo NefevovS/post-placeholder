@@ -11,9 +11,9 @@ const CommentsList = ({ postId }) => {
   const commentsStateArray = useSelector((state) => state.comments);
   const commentsObj = commentsStateArray.find((el) => el.postId === postId);
 
-
   return (
     <div>
+      {commentsObj?.error ? <h2>{commentsObj.error.message}</h2> : ""}
       {commentsObj?.loading ? (
         <Spinner
           animation="border"
