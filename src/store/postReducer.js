@@ -6,7 +6,7 @@ import {
 
 const defaultPosts = {
   loading: false,
-  error: {},
+  error: null,
   posts: [],
 };
 
@@ -15,9 +15,9 @@ export const postReducer = (state = defaultPosts, action) => {
     case FETCH_POST_BY_PAGE_PENDING:
       return { ...state, loading: true };
     case FETCH_POST_BY_PAGE_SUCCEEDED:
-      return { ...state, loading: false, posts: action.payload };
+      return { error:null, loading: false, posts: action.payload };
     case FETCH_POST_BY_PAGE_FAILED:
-      return { ...state, loading: false, error: action.payload };
+      return { posts: [], loading: false, error: action.payload };
 
     default:
       return state;
