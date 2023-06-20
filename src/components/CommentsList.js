@@ -1,26 +1,35 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCommentsById } from "../store/actionCreators";
+
 import CommentsItem from "./CommentsItem";
+import { asyncFetchCommentsByPostId } from "../store/actionCreators";
 
 const CommentsList = ({ postId }) => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
-  const commentsArray = useSelector((state) => state.comments);
-  //ищем массив с заданным postId
-  const comments = commentsArray.filter(
-    (el) => el.comments[0].postId == postId
-  );
-  //
-  //забираем последний массив
-  const comm = comments[comments.length - 1]?.comments;
+  const commentsStateArray = useSelector((state) => state.comments);
+  const commentsObj = commentsStateArray.find((el) => el.postId === postId);
+
 
   return (
-    <div >
-      <div style={{marginLeft:"75px"}}>
+    <div>
+      {commentsObj?.loading ? (
+        <Spinner
+          animation="border"
+          variant="primary"
+          style={{
+            marginLeft: "250px",
+            marginBottom: "50px",
+            marginTop: "50px",
+          }}
+        />
+      ) : (
+        ""
+      )}
+      <div style={{ marginLeft: "75px" }}>
         {visible
-          ? comm?.map((comments, index) => (
+          ? commentsObj.comments?.map((comments, index) => (
               <CommentsItem key={index} comments={comments} />
             ))
           : ""}
@@ -28,7 +37,7 @@ const CommentsList = ({ postId }) => {
       <Button
         onClick={() => {
           if (!visible) {
-            dispatch(fetchCommentsById(postId));
+            dispatch(asyncFetchCommentsByPostId(postId));
             setVisible(true);
           } else {
             setVisible(false);

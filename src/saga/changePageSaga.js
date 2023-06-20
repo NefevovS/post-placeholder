@@ -1,16 +1,18 @@
 import { PostService } from "../API/PostService";
 import {
   changePage,
-  fetchPostByPage,
-  fetchPostByPageFailed,
+  fetchPostByPageFailed, fetchPostByPagePending,
   fetchPostByPageSucceeded,
   setPostCount,
 } from "../store/actionCreators";
 import { ASYNC_CHANGE_PAGE } from "../store/actionConst";
 import { put, takeEvery, call } from "redux-saga/effects";
 
+const delay=(ms)=>new Promise((res)=>setTimeout(res,ms))
+
 function* fetchPostByPageSaga({ payload: { page } }) {
-  yield put(fetchPostByPage());
+  yield put(fetchPostByPagePending());
+  yield delay(2000)
   const { response, error } = yield call(PostService.getPosts, page);
   if (response) {
     yield put(fetchPostByPageSucceeded(response.data));
