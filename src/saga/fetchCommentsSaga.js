@@ -7,7 +7,8 @@ import {
   fetchCommentsByIdFailed, fetchCommentsByIdPending,
   fetchCommentsByIdSucceeded,
 } from "../store/actionCreators";
-const delay=(ms)=>new Promise((res)=>setTimeout(res,ms))
+import {delay} from "./constDelay";
+
 
 function* fetchCommentsSaga({ payload: { id } }) {
   yield put(fetchCommentsByIdPending(id))

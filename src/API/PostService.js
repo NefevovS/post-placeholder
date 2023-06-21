@@ -24,4 +24,10 @@ export class PostService {
         .then((response) => ({ response }))
         .catch((error) => ({ error }));
   }
+  static async getPostsByUserId(id) {
+    return await axios
+        .get(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
+        .then((response) => ({ response }))
+        .catch((error) => ({ error }));
+  }
 }

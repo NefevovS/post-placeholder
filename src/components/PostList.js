@@ -36,11 +36,9 @@ const PostList = () => {
   return (
     <Container className="d-flex flex-column gap-5">
       <SortAndSearchForm />
-      {posts.error ? <h2>{posts.error.message}</h2> : ""}
-      {posts.loading ? (
+      {posts.error && <h2>{posts.error.message}</h2>}
+      {posts.loading && (
         <Spinner animation="border" variant="primary" className="m-lg-auto" />
-      ) : (
-        ""
       )}
       {searchedAndSortedPosts?.map((post) => (
         <PostItem post={post} key={post.id} />

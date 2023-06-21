@@ -7,8 +7,9 @@ import {
 } from "../store/actionCreators";
 import { ASYNC_CHANGE_PAGE } from "../store/actionConst";
 import { put, takeEvery, call } from "redux-saga/effects";
+import {delay} from "./constDelay";
 
-const delay=(ms)=>new Promise((res)=>setTimeout(res,ms))
+
 
 function* fetchPostByPageSaga({ payload: { page } }) {
   yield put(fetchPostByPagePending());

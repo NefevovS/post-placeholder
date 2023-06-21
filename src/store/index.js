@@ -7,6 +7,7 @@ import { rootSaga } from "../saga";
 import { commentsReducer } from "./commentsReducer";
 import {sortAndSearchReducer} from "./sortAndSearchFormReducer";
 import {userReducer} from "./userReducer";
+import {postsByUserIdReducer} from "./postsByUserIdReducer";
 
 const rootReducer = combineReducers({
   posts: postReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   comments: commentsReducer,
   sortAndSearch:sortAndSearchReducer,
   user:userReducer,
+  postsById:postsByUserIdReducer,
 });
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleWare();
