@@ -13,7 +13,7 @@ import {delay} from "./constDelay";
 
 function* fetchPostByPageSaga({ payload: { page } }) {
   yield put(fetchPostByPagePending());
-  yield delay(2000)
+  yield delay(500)
   const { response, error } = yield call(PostService.getPosts, page);
   if (response) {
     yield put(fetchPostByPageSucceeded(response.data));

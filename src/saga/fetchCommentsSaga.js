@@ -12,7 +12,7 @@ import {delay} from "./constDelay";
 
 function* fetchCommentsSaga({ payload: { id } }) {
   yield put(fetchCommentsByIdPending(id))
-  yield delay(2000)
+  yield delay(500)
   const { response, error } = yield call(PostService.getCommentsByPostId, id);
   if (response) {
     yield put(fetchCommentsByIdSucceeded(response.data,id));

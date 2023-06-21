@@ -46,11 +46,11 @@ const UserInfo = () => {
           }}
         />
       ) : (
-        <Row>
-          <Col sm={5} lg="5">
+        <Row >
+          <Col className="text-center"  >
             <Image src={avatar} rounded width={200} />
           </Col>
-          <Col sm={3}>
+          <Col>
             <b>Username:</b>
             <div>{user.user?.username}</div>
             <b>Name:</b>
@@ -71,7 +71,7 @@ const UserInfo = () => {
           </Col>
         </Row>
       )}
-      <Container className="d-flex flex-column gap-5 mt-5 mb-5">
+      <Container className="d-flex flex-column gap-3 mt-5 mb-5">
         {posts.error && <h2>{posts.error.message}</h2>}
         {posts.loading && (
           <Spinner animation="border" variant="primary" className="m-lg-auto" />

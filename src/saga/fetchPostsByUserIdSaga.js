@@ -8,7 +8,7 @@ import {
 import { FETCH_POSTS_BY_USER_ID_PENDING } from "../store/actionConst";
 
 function* fetchPostsByUserIdSaga({ payload: { id } }) {
-  yield delay(2000);
+  yield delay(500);
   const { response, error } = yield call(PostService.getPostsByUserId, id);
   if (response) {
     yield put(fetchPostsByUserIdSucceeded(response.data, id));

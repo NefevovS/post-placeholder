@@ -34,7 +34,7 @@ const PostList = () => {
   }
 
   return (
-    <Container className="d-flex flex-column gap-5">
+    <Container className="d-flex flex-column gap-3">
       <SortAndSearchForm />
       {posts.error && <h2>{posts.error.message}</h2>}
       {posts.loading && (
